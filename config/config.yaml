@@ -1,0 +1,8 @@
+# Raw data
+raw_data:
+    path: "../data/raw/train.csv"
+    id_column: "id"
+    categorical_cols:
+    - "Gender"
+    - "Vehicle_Age"
+    - "Vehicle_Damage"
