@@ -38,4 +38,8 @@ def preprocess_data(data, config=None):
     data = data.drop(columns=categorical_cols)
     data = pd.concat([data, encoded_df], axis=1)
 
+    # Make the target to be the last columns
+    target_cols = config["raw_data"]["target_cols"]
+    data = utils.move_target_to_last(data, target_cols)
+
     return data

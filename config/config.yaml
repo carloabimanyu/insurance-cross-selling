@@ -6,3 +6,4 @@ raw_data:
     - "Gender"
     - "Vehicle_Age"
     - "Vehicle_Damage"
+    target_cols: "Response"
