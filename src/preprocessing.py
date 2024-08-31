@@ -75,10 +75,6 @@ def preprocess_data(data, config=None):
         encoded_df = pd.DataFrame(encoded_data, index=data.index, columns=feature_names)
         data = pd.concat([data.drop(columns=non_binary_cols), encoded_df], axis=1)
 
-    # Make the target to be the last columns
-    target_cols = config["raw_data"]["target_cols"]
-    data = utils.move_target_to_last(data, target_cols)
-
     # # This code reduces memory usage. Reference: https://www.kaggle.com/code/jmascacibar/optimizing-memory-usage-with-insurance-cross-sell/notebook
     data['Vehicle_Age_1-2 Year'] = data['Vehicle_Age_1-2 Year'].astype('int8')
     data['Vehicle_Age_< 1 Year'] = data['Vehicle_Age_< 1 Year'].astype('int8') 
@@ -94,6 +90,9 @@ def preprocess_data(data, config=None):
     data['Vintage'] = data['Vintage'].astype('int16')
     
     if 'Response' in data.columns:
+        # Make the target to be the last columns
+        target_cols = config["raw_data"]["target_cols"]
+        data = utils.move_target_to_last(data, target_cols)
         data['Response'] = data['Response'].astype('int8')
 
     return data
