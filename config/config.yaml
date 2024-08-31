@@ -1,9 +1,16 @@
 # Raw data
 raw_data:
-    path: "../data/raw/train.csv"
+    path_train: "../data/raw/train.csv"
+    path_test: "../data/raw/test.csv"
     id_column: "id"
     categorical_cols:
     - "Gender"
     - "Vehicle_Age"
     - "Vehicle_Damage"
+    continuos_cols:
+    - "Age"
+    - "Region_Code"
+    - "Annual_Premium"
+    - "Policy_Sales_Channel"
+    - "Vintage"
     target_cols: "Response"
