@@ -1,3 +1,17 @@
+# General
+feature_cols:
+- "Gender"
+- "Age"
+- "Driving_License"
+- "Region_Code"
+- "Previously_Insured"
+- "Vehicle_Age"
+- "Vehicle_Damage"
+- "Annual_Premium"
+- "Policy_Sales_Channel"
+- "Vintage"
+target_cols: "Response"
+
 # Raw data
 raw_data:
     path_train: "../data/raw/train.csv"
@@ -13,4 +27,3 @@ raw_data:
     - "Annual_Premium"
     - "Policy_Sales_Channel"
     - "Vintage"
-    target_cols: "Response"
