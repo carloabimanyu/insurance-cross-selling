@@ -3,7 +3,7 @@ import pickle
 
 app = Flask(__name__)
 
-with open('notebooks\insurance_cross_sell_model.pkl', 'rb') as file:
+with open('notebooks/insurance_cross_sell_model.pkl', 'rb') as file:
     loaded_model = pickle.load(file)
 
 @app.route('/', methods=['GET', 'POST'])
