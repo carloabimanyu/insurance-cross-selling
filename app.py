@@ -3,6 +3,10 @@ import pickle
 
 app = Flask(__name__)
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory('static', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
 with open('notebooks/insurance_cross_sell_model.pkl', 'rb') as file:
     loaded_model = pickle.load(file)
 
