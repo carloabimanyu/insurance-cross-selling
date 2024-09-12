@@ -10,7 +10,6 @@ app = FastAPI()
 with open("notebooks/insurance_cross_sell_model.pkl", 'rb') as file:
     model = pickle.load(file)
     
-
 class CustomerData(BaseModel):
     Gender: int
     Age: int
