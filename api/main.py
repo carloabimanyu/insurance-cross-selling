@@ -14,20 +14,15 @@ class CustomerData(BaseModel):
     Gender: int
     Age: int
     Driving_License: int
-    Region_Code: int
     Previously_Insured: int
     Vehicle_Age: int
     Vehicle_Damage: int
-    Annual_Premium: float
-    Policy_Sales_Channel: int
-    Vintage: int
 
 @app.post("/predict/")
 async def predict(data: CustomerData):
     input_data = [[
-        int(data.Gender), int(data.Age), int(data.Driving_License), int(data.Region_Code),
-        int(data.Previously_Insured), int(data.Vehicle_Age), int(data.Vehicle_Damage),
-        float(data.Annual_Premium), int(data.Policy_Sales_Channel), int(data.Vintage)
+        int(data.Gender), int(data.Age), int(data.Driving_License),
+        int(data.Previously_Insured), int(data.Vehicle_Age), int(data.Vehicle_Damage)
     ]]
     
     prediction = model.predict(input_data)
