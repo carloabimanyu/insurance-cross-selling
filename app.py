@@ -7,7 +7,7 @@ app = Flask(__name__)
 def favicon():
     return send_from_directory('static', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-with open('model/insurance_cross_sell_model.pkl', 'rb') as file:
+with open('model/insurance_cross_sell_model_v.0.1.pkl', 'rb') as file:
     loaded_model = pickle.load(file)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -16,13 +16,9 @@ def predict():
         'Gender': '',
         'Age': '',
         'Driving_License': '',
-        'Region_Code': '',
         'Previously_Insured': '',
         'Vehicle_Age': '',
-        'Vehicle_Damage': '',
-        'Annual_Premium': '',
-        'Policy_Sales_Channel': '',
-        'Vintage': ''
+        'Vehicle_Damage': ''
     }
     prediction = None
     if request.method == 'POST':
@@ -30,19 +26,14 @@ def predict():
             'Gender': request.form['Gender'],
             'Age': request.form['Age'],
             'Driving_License': request.form['Driving_License'],
-            'Region_Code': request.form['Region_Code'],
             'Previously_Insured': request.form['Previously_Insured'],
             'Vehicle_Age': request.form['Vehicle_Age'],
-            'Vehicle_Damage': request.form['Vehicle_Damage'],
-            'Annual_Premium': request.form['Annual_Premium'],
-            'Policy_Sales_Channel': request.form['Policy_Sales_Channel'],
-            'Vintage': request.form['Vintage']
+            'Vehicle_Damage': request.form['Vehicle_Damage']
         }
 
         input_data = [[
-            int(data['Gender']), int(data['Age']), int(data['Driving_License']), int(data['Region_Code']),
-            int(data['Previously_Insured']), int(data['Vehicle_Age']), int(data['Vehicle_Damage']),
-            float(data['Annual_Premium']), int(data['Policy_Sales_Channel']), int(data['Vintage'])
+            int(data['Gender']), int(data['Age']), int(data['Driving_License']),
+            int(data['Previously_Insured']), int(data['Vehicle_Age']), int(data['Vehicle_Damage'])
         ]]
 
         prediction = loaded_model.predict(input_data)
