@@ -7,7 +7,7 @@ import numpy as np
 
 app = FastAPI()
 
-with open("model/insurance_cross_sell_model.pkl", 'rb') as file:
+with open("model\insurance_cross_sell_model_v.0.1.pkl", 'rb') as file:
     model = pickle.load(file)
     
 class CustomerData(BaseModel):
